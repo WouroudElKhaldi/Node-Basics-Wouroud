@@ -40,6 +40,13 @@ function onDataReceived(text) {
   else if(text === 'hello\n'){
     hello();
   }
+  /*
+  *i talkes the first word to be the command "hello" and then i trim in order to access the name at itsown
+  */
+  else if (text.startsWith("hello ")) {
+    const name = text.trim().substring(6);
+    hello(name);
+  }
   else if (text === 'help\n') {
     help();
   }
@@ -64,10 +71,12 @@ function unknownCommand(c){
 /**
  * Says hello
  *
+ * @param {string}
  * @returns {void}
+ * The initial value of the name word is wouroud so if the user didn't type a specific name , it will take wouroud
  */
-function hello(){
-  console.log('hello Wouroud!')
+function hello(word = "Woroud"){
+  console.log(`Hello ${word} !`);
 }
 
 
