@@ -64,7 +64,7 @@ function unknownCommand(c){
  * @returns {void}
  */
 function hello(){
-  console.log('hello!')
+  console.log('hello Wouroud!')
 }
 
 
@@ -79,4 +79,4 @@ function quit(){
 }
 
 // The following line starts the application
-startApp("Jad Sarout")
+startApp("Wouroud El Khaldi")
