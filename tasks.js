@@ -148,7 +148,10 @@ function help() {
   6. list: to list all existing tasks 
   7. add (taskName): to add a task to the list 
   8. remove: for removing the last item in the tasks list 
-  9. remove (task index/number): to remove the task based on its index number `)
+  9. remove (task index/number): to remove the task based on its index number 
+  10. edit (new text): Edit the last item in tasks
+  11. edit (taskIndex) (new text): Edit the item based on index number`
+  )
 }
 
 /**
