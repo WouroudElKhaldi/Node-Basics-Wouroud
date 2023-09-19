@@ -96,7 +96,7 @@ function quit(){
  * @returns {void}
  */
 function help() {
-  console.log('All possible commands: \nhello: for saying hello wouroud!\nquit: for quitting the app\nexit: for quitting the app\nhelp: to see all possible commands')
+  console.log('All possible commands: \nhello: for saying hello wouroud!\nhello (name): to print "hello + (name entered) !" \nquit: for quitting the app\nexit: for quitting the app\nhelp: to see all possible commands')
 }
 
 // The following line starts the application
