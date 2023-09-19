@@ -78,17 +78,19 @@ function onDataReceived(text) {
   } 
   else if (text.startsWith("edit")) {
     const splitEdit = text.trim().split(' ');
-    if (splitEdit.length === 2) {
-      const newTask = splitEdit[1] ;
-      editLastItem(newTask);
-    } else if (splitEdit.length >= 3) {
-      const indexToEdit = parseInt(splitEdit[1]) - 1 ;
-      if (indexToEdit >= 0 && indexToEdit < tasks.length) {
-        const newTask = splitEdit.slice(2).join(' ') ;
-        editTask(newTask , indexToEdit)
-      } else {
+    if (splitEdit.length >= 2) {
+      if(!isNaN(splitEdit[1])) {
+        const indexToEdit = parseInt(splitEdit[1]) - 1 ;  
+        if (indexToEdit >= 0 && indexToEdit < tasks.length) {
+          const newTask = splitEdit.slice(2).join(' ') ;
+          editTask(newTask , indexToEdit) ;       
+        } else {
         console.log("Invalid task number")
-      }     
+      }
+    } else {
+          const newTask = splitEdit.slice(1).join(' ');
+          editLastItem(newTask) ;
+        }
     } else {
       console.log("Invalid edit format")
     }
