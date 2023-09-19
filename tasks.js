@@ -64,15 +64,35 @@ function onDataReceived(text) {
     removeLastItem();
   }
   else if (text.startsWith("remove")){
-    const splitted = text.trim().split(" ");
-    const indexToRemove = parseInt(splitted[1]) -1 ;
+    const splitRemove = text.trim().split(" ");
+    const indexToRemove = parseInt(splitRemove[1]) -1 ;
     if (indexToRemove >= 0 && indexToRemove < tasks.length) {
     const removedTask = remove(indexToRemove);
     console.log(`Task ${removedTask} is removed`) ;
   } else {
     console.log("Invalid task number!")
   }
-  }  
+  } 
+  else if (text === "edit\n") {
+    console.log("Error , missing the task you wanna edit")
+  } 
+  else if (text.startsWith("edit")) {
+    const splitEdit = text.trim().split(' ');
+    if (splitEdit.length === 2) {
+      const newTask = splitEdit[1] ;
+      editLastItem(newTask);
+    } else if (splitEdit.length >= 3) {
+      const indexToEdit = parseInt(splitEdit[1]) - 1 ;
+      if (indexToEdit >= 0 && indexToEdit < tasks.length) {
+        const newTask = splitEdit.slice(2).join(' ') ;
+        editTask(newTask , indexToEdit)
+      } else {
+        console.log("Invalid task number")
+      }     
+    } else {
+      console.log("Invalid edit format")
+    }
+  }
   else{
     unknownCommand(text);
   }
@@ -165,7 +185,7 @@ function remove(index){
 }
 
 /**
- * remove the last item in the task all tasks
+ * remove the last item in the tasks
  *
  * @returns {void}
  */ 
@@ -177,6 +197,30 @@ function removeLastItem(){
     const lastTask = tasks.pop() ;
     console.log(`Task ${lastTask} is removed.`)
   }
+}
+
+/**
+ * edit the last item in the tasks
+ *
+ * @returns {void}
+ */ 
+function editLastItem(newTask){
+  if (tasks.length === 0){
+    console.log("there is no tasks to edit.")
+  } else {
+    tasks[tasks.length - 1] = newTask ;
+    console.log(`Edited the last task to : ${newTask}`)
+  }
+}
+
+/**
+ * edit the item specifid by the index in the tasks
+ *
+ * @returns {void}
+ */ 
+function editTask(newTask , index){
+  tasks[index] = newTask;
+  console.log(`Edited the task ${index + 1} to : ${newTask}`)
 }
 
 // The following line starts the application
