@@ -94,6 +94,18 @@ function onDataReceived(text) {
       console.log("Invalid edit format")
     }
   }
+  else if (text.startsWith("check ")){
+    const taskNumber = parseInt(text.trim().substring(6));
+    if (!isNaN(taskNumber)){
+      check(taskNumber);
+    }
+  }
+  else if (text.startsWith("uncheck ")){
+    const taskNumber = parseInt(text.trim().substring(8));
+    if (!isNaN(taskNumber)){
+      uncheck(taskNumber);
+    }
+  }
   else{
     unknownCommand(text);
   }
@@ -231,6 +243,36 @@ function editLastItem(newTask){
 function editTask(newTask , index){
   tasks[index].text = newTask;
   console.log(`Edited the task ${index + 1} to : ${newTask}`)
+}
+
+/**
+ * check the task as done
+ *
+ * @returns {void}
+ */ 
+function check(taskNumber){
+  const index = taskNumber - 1 ;
+  if (index >= 0 && index < tasks.length){
+    tasks[index].done = true ;
+    console.log(`Task ${taskNumber} is checked as done.`) ;
+  } else {
+    console.log('Invalid task number') ;
+  }
+}
+
+/**
+ * uncheck the task as done
+ *
+ * @returns {void}
+ */ 
+function uncheck(taskNumber){
+  const index = taskNumber - 1;
+  if (index >= 0 && index < tasks.length){
+    tasks[index].done = false ;
+    console.log(`Task ${taskNumber} is checked as undone.`)
+  } else {
+    console.log('Invalid task number') ;
+  }
 }
 
 // The following line starts the application
