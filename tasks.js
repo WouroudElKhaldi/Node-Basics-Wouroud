@@ -16,7 +16,8 @@ function startApp(name){
   console.log(`Welcome to ${name}'s application!`)
   console.log("--------------------")
 }
-
+const fs = require('fs');
+const saveFileName = process.argv[2] || 'data.json';
 
 /**
  * Decides what to do depending on the data that was received
@@ -145,7 +146,8 @@ function hello(word = "Woroud"){
  * @returns {void}
  */
 function quit(){
-  console.log('Quitting now, goodbye!')
+  console.log('Quitting now, goodbye!');
+  fs.writeFileSync(saveFileName, JSON.stringify(tasks));
   process.exit();
 }
 
@@ -178,11 +180,13 @@ function help() {
  *
  * @returns {void}
  */  
-const tasks = [
-  { text: "Buy groceries", done: false},
-  { text: "Clean the house", done: true},
-] ;
-
+let tasks = [];
+try {
+  tasks = JSON.parse(fs.readFileSync(saveFileName));
+} catch (err) {
+  // Handle the case where the file doesn't exist or is invalid
+  console.error('Error loading data:', err.message);
+}
 function list(){
   console.log('Tasks:') ;
   tasks.forEach((task , index) => {
