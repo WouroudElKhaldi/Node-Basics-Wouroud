@@ -163,7 +163,9 @@ function help() {
   8. remove: for removing the last item in the tasks list 
   9. remove (task index/number): to remove the task based on its index number 
   10. edit (new text): Edit the last item in tasks
-  11. edit (taskIndex) (new text): Edit the item based on index number`
+  11. edit (taskIndex) (new text): Edit the item based on index number
+  12. check (task number): mark the task as done based on its number
+  13. uncheck (task number): mark the task as undone based on its number`
   )
 }
 
