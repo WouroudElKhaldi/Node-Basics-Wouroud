@@ -68,7 +68,6 @@ function onDataReceived(text) {
     const indexToRemove = parseInt(splitRemove[1]) -1 ;
     if (indexToRemove >= 0 && indexToRemove < tasks.length) {
     const removedTask = remove(indexToRemove);
-    console.log(`Task ${removedTask} is removed`) ;
   } else {
     console.log("Invalid task number!")
   }
@@ -165,10 +164,12 @@ const tasks = [
   { text: "Buy groceries", done: false},
   { text: "Clean the house", done: true},
 ] ;
+
 function list(){
   console.log('Tasks:') ;
   tasks.forEach((task , index) => {
-    console.log(`${index + 1}: ${task}`)
+    const checkbox = task.done ? '[✓]' : '[ ]';
+    console.log(`${index + 1}: ${checkbox} ${task.text}`);
   });
 }
 
@@ -177,9 +178,10 @@ function list(){
  *
  * @returns {void}
  */ 
-function add(task) {
+function add(taskDescription) {
+  const task = { text: taskDescription , done: false};
   tasks.push(task) ;
-  console.log(`Task ${task} added.`)
+  console.log(`Task ${taskDescription} added.`)
 }
 
 /**
@@ -189,7 +191,7 @@ function add(task) {
  */ 
 function remove(index){
   const taskRemoved = tasks.splice(index , 1)[0];
-  return taskRemoved
+  console.log(`Task ${taskRemoved.text} is removed`)
 }
 
 /**
@@ -203,7 +205,7 @@ function removeLastItem(){
   } 
   else {
     const lastTask = tasks.pop() ;
-    console.log(`Task ${lastTask} is removed.`)
+    console.log(`Task ${lastTask.text} is removed.`)
   }
 }
 
@@ -216,7 +218,7 @@ function editLastItem(newTask){
   if (tasks.length === 0){
     console.log("there is no tasks to edit.")
   } else {
-    tasks[tasks.length - 1] = newTask ;
+    tasks[tasks.length - 1].text = newTask ;
     console.log(`Edited the last task to : ${newTask}`)
   }
 }
@@ -227,7 +229,7 @@ function editLastItem(newTask){
  * @returns {void}
  */ 
 function editTask(newTask , index){
-  tasks[index] = newTask;
+  tasks[index].text = newTask;
   console.log(`Edited the task ${index + 1} to : ${newTask}`)
 }
 
