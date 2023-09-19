@@ -119,7 +119,7 @@ function quit(){
  * @returns {void}
  */
 function help() {
-  console.log('All possible commands: \nhello: for saying hello wouroud!\nhello (name): to print "hello + (name entered) !" \nquit: for quitting the app\nexit: for quitting the app\nhelp: to see all possible commands')
+  console.log('All possible commands: \n1. hello: for saying hello wouroud!\n2. hello (name): to print "hello + (name entered) !" \n3. quit: for quitting the app\n4. exit: for quitting the app\n5. help: to see all possible commands \n6. list: to list all existing tasks \n7. add (taskName): to add a task to the list \n8. remove: for removing the last item in the tasks list \n9. remove (task index/number): to remove the task based on its index number ')
 }
 
 /**
