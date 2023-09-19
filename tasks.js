@@ -58,8 +58,21 @@ function onDataReceived(text) {
   }
   else if (text.startsWith("add ")) {
     const task = text.trim().substring(4) ;
-    add(task)  ;
+    add(task) ;
   }
+  else if (text === "remove\n") {
+    removeLastItem();
+  }
+  else if (text.startsWith("remove")){
+    const splitted = text.trim().split(" ");
+    const indexToRemove = parseInt(splitted[1]) -1 ;
+    if (indexToRemove >= 0 && indexToRemove < tasks.length) {
+    const removedTask = remove(indexToRemove);
+    console.log(`Task ${removedTask} is removed`) ;
+  } else {
+    console.log("Invalid task number!")
+  }
+  }  
   else{
     unknownCommand(text);
   }
@@ -123,7 +136,7 @@ function list(){
 }
 
 /**
- * list all tasks
+ * add task to teh tasks list
  *
  * @returns {void}
  */ 
@@ -132,6 +145,30 @@ function add(task) {
   console.log(`Task ${task} added.`)
 }
 
+/**
+ * remove the task with the index entered by the user
+ *
+ * @returns {void}
+ */ 
+function remove(index){
+  const taskRemoved = tasks.splice(index , 1)[0];
+  return taskRemoved
+}
+
+/**
+ * remove the last item in the task all tasks
+ *
+ * @returns {void}
+ */ 
+function removeLastItem(){
+  if (tasks.length === 0) {
+    console.log("No tasks to remove.")
+  } 
+  else {
+    const lastTask = tasks.pop() ;
+    console.log(`Task ${lastTask} is removed.`)
+  }
+}
 
 // The following line starts the application
 startApp("Wouroud El Khaldi")
