@@ -34,7 +34,7 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-  if (text === 'quit\n' || text === 'exit\n') {
+  if (text === 'quit\n' || text === 'exit\n' || text === 'quit \n' || text === 'exit \n') {
     quit();
   }
   else if(text === 'hello\n'){
@@ -47,20 +47,20 @@ function onDataReceived(text) {
     const name = text.trim().substring(6);
     hello(name);
   }
-  else if (text === 'help\n') {
+  else if (text === 'help\n' || text === 'help \n') {
     help();
   }
-  else if (text === 'list\n') {
+  else if (text === 'list\n' || text === 'list \n') {
     list();
   }
-  else if (text === "add\n") {
+  else if (text === "add\n" || text === 'add \n') {
     console.log("Error , missing the task you wanna add")
   }
   else if (text.startsWith("add ")) {
     const task = text.trim().substring(4) ;
     add(task) ;
   }
-  else if (text === "remove\n") {
+  else if (text === "remove\n" || text === 'remove \n') {
     removeLastItem();
   }
   else if (text.startsWith("remove")){
@@ -73,7 +73,7 @@ function onDataReceived(text) {
     console.log("Invalid task number!")
   }
   } 
-  else if (text === "edit\n") {
+  else if (text === "edit\n" || text === 'edit \n') {
     console.log("Error , missing the task you wanna edit")
   } 
   else if (text.startsWith("edit")) {
