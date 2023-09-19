@@ -50,6 +50,9 @@ function onDataReceived(text) {
   else if (text === 'help\n') {
     help();
   }
+  else if (text === 'list\n') {
+    list();
+  }
   else{
     unknownCommand(text);
   }
@@ -98,6 +101,20 @@ function quit(){
 function help() {
   console.log('All possible commands: \nhello: for saying hello wouroud!\nhello (name): to print "hello + (name entered) !" \nquit: for quitting the app\nexit: for quitting the app\nhelp: to see all possible commands')
 }
+
+/**
+ * list all tasks
+ *
+ * @returns {void}
+ */  
+const tasks = ["Buy groceries", "Clean the house"]
+function list(){
+  console.log('Tasks:') ;
+  tasks.forEach((task , index) => {
+    console.log(`${index + 1}: ${task}`)
+  });
+}
+
 
 // The following line starts the application
 startApp("Wouroud El Khaldi")
