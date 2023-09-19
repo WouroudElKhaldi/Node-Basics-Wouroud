@@ -106,6 +106,9 @@ function onDataReceived(text) {
       uncheck(taskNumber);
     }
   }
+  else if (text === 'clear\n' || text === 'clear \n'){
+    process.stdout.write('\x1Bc');
+  }
   else{
     unknownCommand(text);
   }
