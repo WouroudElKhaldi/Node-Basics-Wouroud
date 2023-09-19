@@ -68,7 +68,7 @@ function onDataReceived(text) {
     const splitRemove = text.trim().split(" ");
     const indexToRemove = parseInt(splitRemove[1]) -1 ;
     if (indexToRemove >= 0 && indexToRemove < tasks.length) {
-    const removedTask = remove(indexToRemove);
+    remove(indexToRemove);
   } else {
     console.log("Invalid task number!")
   }
@@ -135,7 +135,7 @@ function unknownCommand(c){
  * @returns {void}
  * The initial value of the name word is wouroud so if the user didn't type a specific name , it will take wouroud
  */
-function hello(word = "Woroud"){
+function hello(word = "Wouroud"){
   console.log(`Hello ${word} !`);
 }
 
