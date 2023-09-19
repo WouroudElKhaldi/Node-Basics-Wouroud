@@ -161,7 +161,10 @@ function help() {
  *
  * @returns {void}
  */  
-const tasks = ["Buy groceries", "Clean the house"]
+const tasks = [
+  { text: "Buy groceries", done: false},
+  { text: "Clean the house", done: true},
+] ;
 function list(){
   console.log('Tasks:') ;
   tasks.forEach((task , index) => {
