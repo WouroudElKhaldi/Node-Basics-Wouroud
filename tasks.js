@@ -53,6 +53,13 @@ function onDataReceived(text) {
   else if (text === 'list\n') {
     list();
   }
+  else if (text === "add\n") {
+    console.log("Error , missing the task you wanna add")
+  }
+  else if (text.startsWith("add ")) {
+    const task = text.trim().substring(4) ;
+    add(task)  ;
+  }
   else{
     unknownCommand(text);
   }
@@ -113,6 +120,16 @@ function list(){
   tasks.forEach((task , index) => {
     console.log(`${index + 1}: ${task}`)
   });
+}
+
+/**
+ * list all tasks
+ *
+ * @returns {void}
+ */ 
+function add(task) {
+  tasks.push(task) ;
+  console.log(`Task ${task} added.`)
 }
 
 
