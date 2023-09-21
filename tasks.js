@@ -17,7 +17,7 @@ function startApp(name){
   console.log("--------------------")
 }
 const fs = require('fs');
-const saveFileName = process.argv[2] || 'data.json';
+const saveFileName = 'data.json';
 
 /**
  * Decides what to do depending on the data that was received
@@ -38,7 +38,7 @@ function onDataReceived(text) {
   if (text === 'quit\n' || text === 'exit\n' || text === 'quit \n' || text === 'exit \n') {
     quit();
   }
-  else if(text === 'hello\n'){
+  else if(text === 'hello\n' || text === "hello \n"){
     hello();
   }
   /*
