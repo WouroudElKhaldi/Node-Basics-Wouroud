@@ -35,10 +35,11 @@ const saveFileName = 'data.json';
  * @returns {void}
  */
 function onDataReceived(text) {
-  if (text === 'quit\n' || text === 'exit\n' || text === 'quit \n' || text === 'exit \n') {
+  text = text.replace('\n','');
+  if (text === 'quit' || text === 'exit' || text === 'quit ' || text === 'exit ') {
     quit();
   }
-  else if(text === 'hello\n' || text === "hello \n"){
+  else if(text === 'hello' || text === "hello "){
     hello();
   }
   /*
@@ -48,20 +49,20 @@ function onDataReceived(text) {
     const name = text.trim().substring(6);
     hello(name);
   }
-  else if (text === 'help\n' || text === 'help \n') {
+  else if (text === 'help' || text === 'help ') {
     help();
   }
-  else if (text === 'list\n' || text === 'list \n') {
+  else if (text === 'list' || text === 'list ') {
     list();
   }
-  else if (text === "add\n" || text === 'add \n') {
+  else if (text === "add" || text === 'add ') {
     console.log("Error , missing the task you wanna add")
   }
   else if (text.startsWith("add ")) {
     const task = text.trim().substring(4) ;
     add(task) ;
   }
-  else if (text === "remove\n" || text === 'remove \n') {
+  else if (text === "remove" || text === 'remove ') {
     removeLastItem();
   }
   else if (text.startsWith("remove")){
@@ -73,7 +74,7 @@ function onDataReceived(text) {
     console.log("Invalid task number!")
   }
   } 
-  else if (text === "edit\n" || text === 'edit \n') {
+  else if (text === "edit" || text === 'edit ') {
     console.log("Error , missing the task you wanna edit")
   } 
   else if (text.startsWith("edit")) {
@@ -107,7 +108,7 @@ function onDataReceived(text) {
       uncheck(taskNumber);
     }
   }
-  else if (text === 'clear\n' || text === 'clear \n'){
+  else if (text === 'clear' || text === 'clear '){
     process.stdout.write('\x1Bc');
   }
   else{

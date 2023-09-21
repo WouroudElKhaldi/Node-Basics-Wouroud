@@ -161,7 +161,7 @@ Think of a single task. Until now, a task was, for example "get milk". It was ju
 8. Document those new commands in the "help" text
 9. commit ("documented check/uncheck"). Congrats! At this state, you have a full fledged CRUD app, with just one problem...It doesn't save anything! Let's fix that
 
-If you haven't yet, now would be a good moment to push
+If you haven't yet,  now would be a good moment to push
 
 ## Step 7: Persistent data!
 
