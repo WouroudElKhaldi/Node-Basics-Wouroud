@@ -17,7 +17,7 @@ function startApp(name){
   console.log("--------------------")
 }
 const fs = require('fs');
-const saveFileName = 'data.json';
+const saveFileName = process.argv[2] || 'data.json';
 
 /**
  * Decides what to do depending on the data that was received
